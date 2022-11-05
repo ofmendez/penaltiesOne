@@ -1,0 +1,429 @@
+@font-face {
+     font-family: Calibre-Light;
+     src: url(../Fonts/Calibre-Light.woff);
+}
+ @font-face {
+     font-family: Calibre-Semibold;
+     src: url(../Fonts/Calibre-Semibold.woff);
+}
+ *{
+     margin: 0;
+     padding: 0;
+     list-style: none;
+     text-decoration: none;
+     border: none;
+     outline: none;
+     font-family: Calibre-Light;
+     box-sizing: border-box;
+}
+ body{
+     --color-blanco: #fff;
+     --color-naranja: #f85b1b;
+     --color-negro: #000;
+      --color-gris: #999;
+     --padding-general: 4%;
+     --fuente-parrafos: 18px;
+     background-color: var(--color-negro);
+     color: var(--color-blanco);
+}
+@media (max-width: 720px) {
+  body{
+     --padding-general: 10%;
+    }
+  }
+ h1, h2, h3, h4{
+     font-family: Calibre-Semibold;
+}
+h1{
+    font-size: clamp(20px, 7.5vw, 300px);
+    text-align:right;
+     font-family: Calibre-Semibold;
+     line-height: 0.85em;
+}
+@media (max-width: 720px) {
+  h1{
+      font-size:6.5vw;
+      margin: 0 auto;
+    }
+  }
+ h2{
+     font-size: clamp(30px, 5.8vw, 90px);
+     text-align:center;
+}
+ h3{
+     font-size: clamp(20px, 5.8vw, 50px);
+     line-height: 1em;
+}
+h4{
+    font-size: clamp(20px, 5.8vw, 36px);
+    line-height: 1em;
+}
+ p {
+     font-size: var(--fuente-parrafos);
+}
+ .JustifyText{
+     text-align: justify;
+}
+.TextoGris{
+    color: var(--color-gris);
+    font-family: Calibre-Semibold;
+}
+.TextoNaranja{
+  color: var(--color-naranja);
+  font-family: Calibre-Semibold;
+}
+ .OrangeButton{
+     background-color: var(--color-naranja);
+     border: none;
+     color: var(--color-blanco);
+     padding: 15px 32px 9px;
+     width:100%;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 16px;
+     margin: 4px 2px;
+     cursor: pointer;
+     font-family: Calibre-Semibold;
+}
+ img{
+     width:100%;
+}
+ .Header{
+     background-color: var(--color-naranja);
+
+}
+.LogoHeader{
+  width:60%;
+  max-width:250px;
+  min-width: 140px;
+  padding:20px;
+}
+@media (max-width: 720px) {
+  .LogoHeader{
+      display:block;
+      margin: 0 auto;
+    }
+  }
+  .Banner{
+        padding:var(--padding-general);
+  }
+  .BannerLeft{
+    width: 50%;
+    float: left;
+  }
+  .BannerRight{
+    width: 50%;
+    float: left;
+  }
+  .EscudoJuego{
+    width:40%;
+     display:block;
+
+     margin-left: auto;
+  }
+ .Content{
+     clear: both;
+     width:100%;
+     position: relative;
+     margin:0 auto;
+}
+.ContentMaxWidth{
+    max-width:1550px;
+}
+ .LeftContent{
+     width:60%;
+     padding:var(--padding-general);
+     float:left;
+}
+@media (max-width: 720px) {
+  .LeftContent{
+      width:100%;
+    }
+  }
+ input, select{
+     width:100%;
+     background-color: var(--color-negro);
+     border: 1px solid var(--color-blanco);
+     margin-bottom:35px;
+     color: var(--color-blanco);
+     padding:10px;
+     font-size: var(--fuente-parrafos);
+}
+@media (max-width: 720px) {
+  input, select{
+
+      margin-bottom:15px;
+
+ }
+  }
+.ElegirArchivos{
+   border: 0px solid var(--color-blanco);
+   padding:8px 10px 2px 0px;
+}
+.AceptarTerminos{
+  height: 1em;
+  width: 1em;
+  float:left;
+  vertical-align: middle;
+  width:6%;
+}
+.TextoTerminos{
+  float: left;
+  font-size: 14px;
+  color: #cccbcc;
+  width:94%;
+  text-align: justify;
+  padding-bottom:10px;
+}
+.LinkTerminos{
+  color: var(--color-naranja);
+}
+ ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+     color: var(--color-blanco);
+     opacity: 1;
+    /* Firefox */
+}
+ :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+     color: var(--color-blanco);
+}
+ ::-ms-input-placeholder {
+    /* Microsoft Edge */
+     color: var(--color-blanco);
+}
+
+.ErrorForm{
+  margin-top:8px;
+  color: var(--color-naranja);
+  text-align: center;
+}
+
+.OkForm{
+  margin-top:8px;
+  color: var(--color-naranja);
+  text-align: center;
+}
+
+ .RightContent{
+     width:40%;
+     padding:var(--padding-general);
+     float:left;
+     padding-bottom:0 ;
+}
+@media (max-width: 720px) {
+  .RightContent{
+    padding-top:60px;
+    padding-bottom:0px;
+    width:100%;
+    }
+  }
+ .Footer{
+     width:100%;
+}
+ .FooterNaranja{
+     clear: both;
+     background-color: var(--color-naranja);
+     padding:var(--padding-general);
+}
+ .FooterNaranjaContent{
+   padding-top:1%;
+   padding-bottom:1%;
+     text-align: center;
+     width:65%;
+     margin:0 auto;
+}
+@media (max-width: 720px) {
+  .FooterNaranjaContent{
+      width:85%;
+ }
+}
+.InputSuscripcion{
+  width:73%;
+  margin-right:2%;
+  float:left;
+  background-color: var(--color-naranja);
+}
+.SubmitSuscripcion{
+  width:25%;
+  background-color: var(--color-negro);
+  border: none;
+  color: var(--color-blanco);
+  padding: 14px 0px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  float:left;
+  font-size: 16px;
+
+  cursor: pointer;
+  font-family: Calibre-Semibold;
+}
+@media (max-width: 420px) {
+  .InputSuscripcion, .SubmitSuscripcion{
+    width:100%;
+    margin-bottom: 5px;
+  }
+}
+ .FooterNegro{
+     clear: both;
+     width:100%;
+     position:relative;
+     padding:15px 40px 15px;
+     display: flex;
+    align-items: end;
+}
+ .FooterNegroContentLeft{
+     width:60%;
+     float: left;
+     text-align: left;
+}
+ .FooterNegroContentRight{
+     width:40%;
+     float: left;
+     text-align: right;
+     justify-content: flex-end;
+     display: flex;
+     align-items: end;
+}
+.IconoRedes{
+width:24px;
+margin-left:5px;
+}
+@media (max-width: 720px) {
+  .FooterNegroContentLeft, .FooterNegroContentRight{
+      width:100%;
+      text-align: center;
+      float: none;
+          justify-content: center;
+  }
+  .FooterNegro{
+    display:block;
+      padding:15px 40px 10px;
+    }
+}
+ .FooterGradient{
+     height:20px;
+     background: linear-gradient(90deg, rgba(254,255,49,1) 0%, rgba(251,149,0,1) 15%, rgba(251,91,27,1) 50%, rgba(94,30,231,1) 85%, rgba(158,153,255,1) 100%);
+}
+
+
+
+
+.ContenidoTerminos{
+  padding:var(--padding-general);
+  list-style: inside !important;
+  text-align: justify;
+}
+
+.EscudoTerminos{
+  width:18%;
+  margin: 0 auto;
+  display: block;
+  min-width: 180px;
+}
+
+.TituloTerminos{
+  text-align: center;
+}
+li, ul, ol{
+  list-style: inside !important;
+  font-size: var(--fuente-parrafos);
+}
+
+
+
+.ContenidoLogin{
+
+  width:100vw;
+  background-image: url(../Images/FondoIngreso.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+
+    vertical-align:middle;
+}
+.ContenidoLogin h3{
+  text-align: center;
+  line-height: 0.85em;
+}
+
+.ContenidoLoginBlock{
+padding-top:8vh;
+}
+
+.ContenidoFranja{
+    margin: 0 0 30px 0;
+}
+
+.EscudoLogin{
+  width:12%;
+  margin: 0 auto;
+  display: block;
+  min-width: 180px;
+}
+
+.FormaLogin{
+  width:40%;
+  max-width:400px;
+  margin: 0 auto;
+}
+@media (max-width: 720px) {
+  .FormaLogin{
+    width:80%;
+  }
+}
+
+.FormaLogin input {
+  margin-bottom: 15px;
+}
+
+.FormaLogin p {
+  margin-bottom: 8px;
+  text-align: left;
+}
+.CredencialesErradas{
+  margin-top:8px;
+  color: var(--color-naranja);
+}
+
+
+.ContenidoResultado{
+
+
+  background-image: url(../Images/FondoResultado.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+
+    vertical-align:middle;
+}
+
+.ContentAlignCenter{
+  margin: 0 auto !important;
+  max-width: 1100px;
+  display: flex;
+align-items: center;
+}
+
+@media (max-width: 720px) {
+  .ContentAlignCenter{
+    display:block;
+  }
+}
+
+.ContenidoResultadoColumna{
+  padding:0 5%;
+  float: left;
+  width: 50%;
+}
+
+@media (max-width: 720px) {
+  .ContenidoResultadoColumna{
+    width: 100%;
+    padding: 0 10% 10% 10%;
+  }
+}

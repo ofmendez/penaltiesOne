@@ -1,0 +1,115 @@
+<div class="Header">
+    <img class="LogoHeader" src="Images/LogoVertiv.svg" />
+</div>
+<div class="Banner">
+    <div class="BannerLeft">
+        <img src="Images/JugadorBannerInscripcion.png">
+    </div>
+    <div class="BannerRight">
+        <img class="EscudoJuego " src="Images/LogoEquipoElite.svg" />
+        <br>
+        <h1>HAZ PARTE <span class="TextoGris">DE NUESTRO</span> EQUIPO <span class="TextoNaranja">ÉLITE</span></h1>
+    </div>
+</div>
+<div class="Content ContentMaxWidth">
+    <div class="LeftContent">
+        <h2>REGÍSTRATE AHORA</h2>
+        <div class="FooterGradient">
+        </div>
+        <br>
+        <form  onsubmit="return TryLogin(this)" action="#" id="Registro">
+            <input type="text" id="NombreCompleto" name="NombreCompleto" placeholder="* Nombre Completo" required>
+            <select id="Pais" name="Pais">
+                <option disabled selected value>* País</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Belice">Belice</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Chile ">Chile </option>
+                <option value="Colombia">Colombia</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="ElSalvador">El Salvador</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Honduras">Honduras</option>
+                <option value="México">México</option>
+                <option value="Miami">Miami (USA)</option>
+                <option value="Panamá">Panamá</option>
+                <option value="Paraguay">Paraguay</option>
+                <option value="Perú">Perú</option>
+                <option value="PuertoRico">Puerto Rico</option>
+                <option value="Uruguay">Uruguay</option>
+                <option value="Venezuela">Venezuela</option>
+            </select>
+            <input type="email" id="Email" name="Email" placeholder="* E-mail Corporativo" required>
+            <input type="text" id="Compania" name="Compania" placeholder="* Compañia" required>
+            <input type="text" id="Cargo" name="Cargo" placeholder="* Cargo" required>
+            <select id="MontoVenta" name="MontoVenta">
+                <option disabled selected value>* Monto de Venta</option>
+                <option value="Rango1">De $500 a $1,000 dólares.</option>
+                <option value="Rango2">De $1,000 a $1,500 dólares.</option>
+                <option value="Rango3">Más de $1,500 dólares.</option>
+            </select>
+            <input class="ElegirArchivos" type="file" id="ArchivosCarga" name="ArchivosCarga"
+                accept=".jpg, .jpeg, .png, .pdf, .doc, .docx" multiple>
+            <div class="TerminosCondiciones">
+                <div class="AceptarTerminos"> <input id="checkbox" type="checkbox" /></div>
+                <div class="TextoTerminos"><label for="checkbox"> Doy mi consentimiento para recibir comunicaciones
+                        promocionales de Vertiv. Entiendo que puedo optar por no recibir comunicaciones con Vertiv de
+                        manera proactiva en cualquier momento. Al hacer clic en enviar acepta los <a
+                            class="LinkTerminos" href="/TerminosYCondiciones">Términos y condiciones y la Política de
+                            privacidad de
+                            Vertiv</a>.</label></div>
+            </div>
+            <button type="submit" class="OrangeButton" form="Registro" value="Submit">ENVIAR</button>
+            <div class="ErrorForm" style="display:none;">Por favor completa correctamente el formulario y vuelve a
+                intentarlo.</div>
+            <div class="OkForm" style="display:none;">Gracias por registrarte, pronto recibirás en el Correo Electrónico
+                que inscribiste la información necesaria para participar.</div>
+        </form>
+    </div>
+    <div class="RightContent">
+        <h3>¿ESTÁS LISTO? PREPARATE PARA ANOTAR.</h3>
+        <br>
+        <p class="JustifyText">Participa con Vertiv y gana increíbles premios. Sí realizas una venta superior a USD
+            $500, inscrÍbete y recibirás a vuelta de correo tus datos de acceso para participar en nuestro gran reto. No
+            dejes pasar esta oportunidad y se parte de esta experiencia Vertiv. </p>
+        <br>
+        <p>¿Ya te registraste? Haz clic a continuación para jugar.</p>
+        <button class="OrangeButton" onclick="createDump()">IR A JUGAR</button>
+        <br><br>
+        <p>Consulta los Términos y Condiciones de la Experiencia.</p>
+        <button class="OrangeButton">TÉRMINOS Y CONDICIONES</button>
+        <br><br>
+        <img src="Images/JugadorInscripcion.png">
+    </div>
+</div>
+<div class="Footer">
+    <div class="FooterNaranja">
+        <div class="FooterNaranjaContent">
+            <p style="color: var(--color-naranja);">-</p>
+            <h4>¡CONVIÉRTETE EN UN PARTNER DE VERTIV!</h4>
+            <br>
+            <p>Si aún no formas parte de nuestro programa para socios, te invitamos a registrarte y gozar de todos los
+                beneficios y herramientas para ayudarte a hacer crecer tu negocio.</p>
+            <br>
+            <form action="/action_page.php" id="Suscripcion">
+                <input class="InputSuscripcion" type="email" id="EmailSuscripcion" name="EmailSuscripcion"
+                    placeholder="* E-mail" required>
+                <button type="submit" class="SubmitSuscripcion" form="Suscripcion" value="Submit">ENVIAR</button>
+            </form>
+            <p style="color: var(--color-naranja);">-</p>
+        </div>
+    </div>
+    <div class="FooterNegro">
+        <div class="FooterNegroContentLeft">
+            Copyright © 2022 Vertiv. Todos los derechos reservados.
+        </div>
+        <div class="FooterNegroContentRight">
+            Conectate con nosotros: <a href="https://twitter.com/vertivlatam" target="_blank"><img class="IconoRedes"
+                    src="Images/TW.svg" /></a><a href="https://www.facebook.com/VertivLatinoamerica/"
+                target="_blank"><img class="IconoRedes" src="Images/FB.svg" /></a>
+        </div>
+    </div>
+    <div class="FooterGradient">
+    </div>
+</div>

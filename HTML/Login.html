@@ -1,0 +1,38 @@
+   <div class="Header" id="Header">
+      <img class="LogoHeader" src="../Images/LogoVertiv.svg" />
+   </div>
+   <div class="Content">
+      <div class="ContenidoLogin" id="ContenidoLogin">
+         <div class="ContenidoLoginBlock">
+            <div class="ContenidoFranja">
+               <img class="EscudoLogin"src="../Images/LogoEquipoElite.svg" />
+            </div>
+            <div class="ContenidoFranja">
+               <h3> ¿ESTÁS LISTO?<br>
+                  <span class="TextoGris">PREPARATE</span> PARA<br>
+                  <span class="TextoNaranja">ANOTAR.</span>
+               </h3>
+            </div>
+            <div class="ContenidoFranja FormaLogin">
+               <form action="/action_page.php" id="Registro">
+                  <input type="text" id="Usuario" name="Usuario" placeholder="Nombre de Usuario" required>
+                  <input type="password" id="Contrasena" name="Contrasena" placeholder="Contraseña" required>
+                  <p>¿No tienes una cuenta? <a class="LinkTerminos" href="">Registrate aquí</a></p>
+                  <button type="submit" class="OrangeButton" form="Registro" value="Submit">INGRESAR</button>
+                  <div class="CredencialesErradas" style="display:none;">Las credenciales que ingresaste no son correctas, por favor revísalas y vuelve a intentarlo.</div>
+               </form>
+               <br>
+               <br>
+            </div>
+         </div>
+      </div>
+   </div>
+   <script>
+      function definirTamanoContenido() {
+        let AlturaHeader = document.getElementById('Header').clientHeight;
+        let AlturaPantalla = window.innerHeight;
+        document.getElementById("ContenidoLogin").style.minHeight = AlturaPantalla - AlturaHeader + "px";
+      }
+      window.onload = definirTamanoContenido;
+      window.addEventListener('resize', definirTamanoContenido, true);
+   </script>

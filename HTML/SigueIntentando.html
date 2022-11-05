@@ -1,0 +1,26 @@
+   <div class="Content">
+   <div class="ContenidoResultado" id="ContenidoLogin">
+      <div class="ContenidoLoginBlock">
+         <div class="ContenidoFranja">
+            <img class="EscudoLogin"src="../Images/LogoEquipoElite.svg" />
+         </div>
+         <div class="ContenidoFranja ContentAlignCenter">
+            <div class="ContenidoResultadoColumna">
+               <h3>SIGUE INTENTANDO <span class="TextoGris">QUE VAS POR </span><span class="TextoNaranja">BUEN CAMINO.</span></h3>
+               <br>
+               <H4>¡EL QUE SIGUE LA CONSIGUE! ✌</h4>
+               <br>
+               <button class="OrangeButton">TÉRMINOS Y CONDICIONES</button>
+            </div>
+            <div class="ContenidoResultadoColumna"><img src="../Images/JugadorResultado.png" /></div>
+         </div>
+      </div>
+   </div>
+   <script>
+      function definirTamanoResultado() {
+        let AlturaPantalla = window.innerHeight;
+        document.getElementById("ContenidoLogin").style.minHeight = AlturaPantalla + "px";
+      }
+      window.onload = definirTamanoResultado;
+      window.addEventListener('resize', definirTamanoResultado, true);
+   </script>
