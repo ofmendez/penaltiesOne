@@ -7,7 +7,7 @@
          <div class="ContenidoFranja ContentAlignCenter">
             <div class="ContenidoResultadoColumna">
                <h3><span class="TextoNaranja">¡FELICITACIONES</span></H3>
-               <h3>GANASTE UNA GIFTCARD POR <span class="TextoNaranja">$20</span></h3>
+               <h3>GANASTE UNA GIFTCARD POR <span id="valueGC" class="TextoNaranja"></span></h3>
                <br>
                <p> Pronto recibirás un correo con las indicaciones de como canjear tu premio sí cumples con todos los <a class="LinkTerminos" href="/TerminosYCondiciones">Términos y Condiciones</a> de Vertiv.</p>
                <br>
@@ -19,9 +19,10 @@
    </div>
    <script>
       function definirTamanoResultado() {
-        let AlturaPantalla = window.innerHeight;
-        document.getElementById("ContenidoLogin").style.minHeight = AlturaPantalla + "px";
+         let AlturaPantalla = window.innerHeight;
+         document.getElementById("ContenidoLogin").style.minHeight = AlturaPantalla + "px";
       }
       window.onload = definirTamanoResultado;
       window.addEventListener('resize', definirTamanoResultado, true);
+
    </script>

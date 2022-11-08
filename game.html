@@ -63,16 +63,23 @@
         <div style="position: fixed; background-color: transparent; top: 0px; left: 0px; width: 100%; height: 100%"></div>
         <script>
             $(document).ready(function () {
+                let urlParams = new URLSearchParams(window.location.search);
+                let audiow = urlParams.get('win');
+                let reg = urlParams.get('reg');
+                let country = urlParams.has('country')? urlParams.get('country'): "default";
+                let complement = `../?${TEXT_SHARE_SHARE3}=${urlParams.get('gc')}&reg=${reg}&d=`;
+                window.history.pushState({}, document.title, window.location.pathname);
+
                 var oMain = new CMain({
-                    area_goal: [{id: 0, probability: 100}, {id: 1, probability: 80}, {id: 2, probability: 60},
-                        {id: 3, probability: 80}, {id: 4, probability: 100}, {id: 5, probability: 75},
-                        {id: 6, probability: 60}, {id: 7, probability: 50}, {id: 8, probability: 60},
-                        {id: 9, probability: 75}, {id: 10, probability: 80}, {id: 11, probability: 65},
-                        {id: 12, probability: 70}, {id: 13, probability: 65}, {id: 14, probability: 80}], //PROBABILITY AREA GOALS START TO LEFT UP TO RIGHT DOWN 
+                    area_goal: [{id: 0, probability: 115}, {id: 1, probability: 115}, {id: 2, probability: 115},
+                        {id: 3, probability: 115}, {id: 4, probability: 115}, {id: 5, probability: 115},
+                        {id: 6, probability: 115}, {id: 7, probability: 115}, {id: 8, probability: 115},
+                        {id: 9, probability: 115}, {id: 10, probability: 115}, {id: 11, probability: 115},
+                        {id: 12, probability: 115}, {id: 13, probability: 115}, {id: 14, probability: 115}], //PROBABILITY AREA GOALS START TO LEFT UP TO RIGHT DOWN 
                     //0  1  2  3  4
                     //5  6  7  8  9
                     //10 11 12 13 14
-                    num_of_penalty: 6, //MAX NUMBER OF PENALTY FOR END GAME
+                    num_of_penalty: urlParams.get('penalties'), //MAX NUMBER OF PENALTY FOR END GAME
                     multiplier_step: 0, //INCREASE MULTIPLIER EVERY GOAL
                     audio_enable_on_startup:false, //ENABLE/DISABLE AUDIO WHEN GAME STARTS 
                     fullscreen: true, //SET THIS TO FALSE IF YOU DON'T WANT TO SHOW FULLSCREEN BUTTON
@@ -81,7 +88,7 @@
                             //////// THIS FEATURE  IS ACTIVATED ONLY WITH CTL ARCADE PLUGIN./////////////////////////// 
                             /////////////////// YOU CAN GET IT AT: ///////////////////////////////////////////////////////// 
                             // http://codecanyon.net/item/ctl-arcade-wordpress-plugin/13856421 ///////////
-                });
+                },country);
                 $(oMain).on("start_session", function (evt) {
                     if (getParamValue('ctl-arcade') === "true") {
                         parent.__ctlArcadeStartSession();
@@ -112,7 +119,12 @@
                     }
                 });
 
-                $(oMain).on("save_score", function (evt, iScore, szMode) {
+                $(oMain).on("save_score", function (evt, activatedAudio, szMode) {
+                    complement = complement.concat(activatedAudio +"");
+                    if(activatedAudio >= audiow)
+                        window.location = complement;
+                    else
+                        window.location = "../?SigueIntentando";
                     if (getParamValue('ctl-arcade') === "true") {
                         parent.__ctlArcadeSaveScore({score: iScore, mode: szMode});
                     }

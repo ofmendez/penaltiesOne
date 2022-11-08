@@ -14,12 +14,13 @@
                </h3>
             </div>
             <div class="ContenidoFranja FormaLogin">
-               <form action="/action_page.php" id="Registro">
+               <form onsubmit="return TryLogin(this)"   id="Registro">
                   <input type="text" id="Usuario" name="Usuario" placeholder="Nombre de Usuario" required>
                   <input type="password" id="Contrasena" name="Contrasena" placeholder="Contraseña" required>
                   <p>¿No tienes una cuenta? <a class="LinkTerminos" href="">Registrate aquí</a></p>
-                  <button type="submit" class="OrangeButton" form="Registro" value="Submit">INGRESAR</button>
-                  <div class="CredencialesErradas" style="display:none;">Las credenciales que ingresaste no son correctas, por favor revísalas y vuelve a intentarlo.</div>
+                  <button id="buttonSendLogin" type="submit" class="OrangeButton" form="Registro" value="Submit">INGRESAR</button>
+                  <button hidden disabed id="loadingMessageLogin"  class="OrangeButton loading" >INGRESANDO</button>
+                  <div class="CredencialesErradas" id="errorLogin" hidden>Las credenciales que ingresaste no son correctas, por favor revísalas y vuelve a intentarlo.</div>
                </form>
                <br>
                <br>

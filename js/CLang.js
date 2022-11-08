@@ -19,3 +19,4 @@ TEXT_SHARE_MSG1 = "Lograste <strong>";
 TEXT_SHARE_MSG2 = " puntos</strong>!<br><br>Comprate tu puntaje!";
 TEXT_SHARE_SHARE1 = "Obtuve ";
 TEXT_SHARE_SHARE2 = " puntos! ¿Puedes hacerlo mejor?";
+TEXT_SHARE_SHARE3 = "Felicitaciones";

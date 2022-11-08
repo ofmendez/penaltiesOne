@@ -1,4 +1,4 @@
-function CMain(oData) {
+function CMain(oData,country) {
     var _bUpdate;
     var _iCurResource = 0;
     var RESOURCE_TO_LOAD = 0;
@@ -8,6 +8,7 @@ function CMain(oData) {
     var _oMenu;
     var _oHelp;
     var _oGame;
+    var _country = country;
 
     this.initContainer = function () {
         var canvas = document.getElementById("canvas");
@@ -123,7 +124,7 @@ function CMain(oData) {
         s_oSpriteLibrary.addSprite("but_play", "./sprites/but_play.png");
         s_oSpriteLibrary.addSprite("but_exit", "./sprites/but_exit.png");
         s_oSpriteLibrary.addSprite("bg_menu", "./sprites/bg_menu.jpg");
-        s_oSpriteLibrary.addSprite("bg_game", "./sprites/bg_game.jpg");
+        s_oSpriteLibrary.addSprite("bg_game", "./sprites/bg_game/"+_country+".jpg");
         s_oSpriteLibrary.addSprite("msg_box", "./sprites/msg_box.png");
         s_oSpriteLibrary.addSprite("audio_icon", "./sprites/audio_icon.png");
         s_oSpriteLibrary.addSprite("but_home", "./sprites/but_home.png");
@@ -131,7 +132,6 @@ function CMain(oData) {
         s_oSpriteLibrary.addSprite("but_fullscreen", "./sprites/but_fullscreen.png");
         s_oSpriteLibrary.addSprite("ball", "./sprites/ball.png");
         s_oSpriteLibrary.addSprite("but_level", "./sprites/but_level.png");
-        s_oSpriteLibrary.addSprite("bg_game", "./sprites/bg_game.jpg");
         s_oSpriteLibrary.addSprite("but_continue", "./sprites/but_continue.png");
         s_oSpriteLibrary.addSprite("but_yes", "./sprites/but_yes.png");
         s_oSpriteLibrary.addSprite("but_no", "./sprites/but_no.png");
@@ -148,7 +148,7 @@ function CMain(oData) {
         s_oSpriteLibrary.addSprite("goal", "./sprites/goal.png");
 
         for (var i = 0; i < NUM_SPRITE_PLAYER; i++) {
-            s_oSpriteLibrary.addSprite("player_" + i, "./sprites/player/player_" + i + ".png");
+            s_oSpriteLibrary.addSprite("player_" + i, "./sprites/"+country+"/player_" + i + ".png");
         }
 
         for (var i = 0; i < NUM_SPRITE_GOALKEEPER[IDLE]; i++) {

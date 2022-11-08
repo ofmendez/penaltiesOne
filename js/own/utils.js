@@ -47,3 +47,14 @@ export function emailToId(email) {
     return email.replace(/@/g, ' at ').replace(/[^a-z0-9-]+/gi, '-').replace(/^-|-$/g, '');
 }
 
+export function ñ(el) {
+    switch (el.charAt(0)) {
+        case "#":  return document.querySelector(el)
+        case ".":  return document.querySelectorAll(el)
+        default:   return document.getElementsByTagName(el)
+    }
+}
+
+export function RandChar() {
+    return ("ABCDEFGHIJKLMNOPQRSTUVWXYZ"[Math.floor(Math.random() * 26)]);
+}
