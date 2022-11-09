@@ -1,7 +1,6 @@
 import { emailToId , ñ, RandChar} from './utils.js'
-import {createUserData ,getUserData, updateScore, createDump, uploadImagesToUser} from "./database.js";
+import {createUserData ,getUserData, updateScore, uploadImagesToUser} from "./database.js";
 import * as views from "./views.js";
-import {b64EncodeUnicode} from "./codification.js"
 /*
  http://127.0.0.1:5500/game.html?penalties=4&win=345&gc=84
 */
@@ -16,17 +15,21 @@ else
     views.GoTo("Register")
 
 
-const Register = (form)=>{
+const Register = (form,dbSnap, uId)=>{
+    let reg =0
+    if(dbSnap.child(uId).exists())
+        if(dbSnap.child(`${uId}/register`).exists())
+            reg = dbSnap.child(`${uId}/register`).val()
     createUserData(
-        emailToId(form.elements.namedItem('Email').value),
+        uId,
         form.elements.namedItem('NombreCompleto').value,
         form.elements.namedItem('Pais').value,
         form.elements.namedItem('Email').value,
         form.elements.namedItem('Compania').value,
         form.elements.namedItem('Cargo').value,
         form.elements.namedItem('MontoVenta').value,
-        form.elements.namedItem('checkbox').checked, 
-        form.elements.namedItem('ArchivosCarga').files, 
+        form.elements.namedItem('ArchivosCarga').files,
+        (reg+1) 
     ).then((res)=>{
         userID = emailToId(form.elements.namedItem('Email').value);
         console.log("Register function");
@@ -39,35 +42,48 @@ const Register = (form)=>{
 }
 
 function Loaded(v) {
-    if(v === views.viewAv[2]  )
+    let r ='N'
+    if(v === views.viewAv[2]  ){
         ñ('#valueGC').innerHTML = `$${urlParams.get('Felicitaciones')}`
-    if(v === views.viewAv[2] || v === views.viewAv[3] ){
-        console.log(urlParams.get('d'));
-        console.log(urlParams.get('reg'));
+        r='W'
     }
+    if(v === views.viewAv[2] || v === views.viewAv[3] ){
+        updateScore(urlParams.get('UID'),urlParams.get('reg'),urlParams.get('d'),r).then((res)=>{
+            console.log(res);
+        }).catch((e)=> console.log(e))
+    }
+}
+function AgainL(f) {
+    ñ('#errorLogin').hidden =false
+    ñ('#buttonSendLogin').hidden = false
+    ñ('#loadingMessageLogin').hidden = true
+    f.reset()
 }
 
 window.TryLogin = (form)=>{
     ñ('#buttonSendLogin').hidden = true
     ñ('#loadingMessageLogin').hidden = false
     getUserData().then((res)=>{
-        let exist = false
-
-        for (const u in res.val()) 
-            exist |= u===emailToId(form.elements.namedItem('Usuario').value)
-        let target = res.child(`${emailToId(form.elements.namedItem('Usuario').value)}/data`).val().toString().split('-')
-        console.log(exist, target.length,target[0],form.elements.namedItem('Contrasena').value, target[1],form.elements.namedItem('Contrasena').value ===target[1] );
-        if(exist && target.length >1 && target[0] ==="send" && form.elements.namedItem('Contrasena').value === target[1]){
-            let country = res.child(`${emailToId(form.elements.namedItem('Usuario').value)}/country`).val();
-            let regist = res.child(`${emailToId(form.elements.namedItem('Usuario').value)}/register`).val();
-            let range = res.child(`${emailToId(form.elements.namedItem('Usuario').value)}/amount-${regist}`).val();
-            window.location = `${lang[0]}?${lang[1]}=${views.viewDat[range]}&${lang[2]}=${views.viewDat2[range]}&${lang[3]}=${views.viewDat3[range]}&${lang[4]}=${country}&${lang[5]}=${regist}`;
-        }else{
-            ñ('#errorLogin').hidden =false
-            ñ('#buttonSendLogin').hidden = false
-            ñ('#loadingMessageLogin').hidden = true
-            form.reset()
-        }
+        let userForm = form.elements.namedItem('Usuario').value+"" ;
+        let pForm    = form.elements.namedItem('Contrasena').value+"" ;
+        let existUser = res.child(userForm.trim()).exists();
+        if(existUser){
+            let x = true
+            let lastr =  res.child(`${userForm}/register`).val()
+            let target = ""
+            for (let i = 1; i <= lastr; i++) {
+                target = res.child(`${userForm}/data-${i}`).exists()? res.child(`${userForm}/data-${i}`).val().toString().split('-') : "";
+                if(target.length >1 && target[0] ==="send" && pForm === target[1]){
+                    x = false;
+                    let country = res.child(`${userForm}/country`).val();
+                    let regist = i;
+                    let range = res.child(`${userForm}/amount-${regist}`).val();
+                    window.location = `${lang[0]}?${lang[1]}=${views.viewDat[range]}&${lang[2]}=${views.viewDat2[range]}&${lang[3]}=${views.viewDat3[range]}&${lang[4]}=${country}&${lang[5]}=${regist}&UID=${userForm}`;
+                }
+            }
+            if( x)
+                AgainL(form)
+        } else AgainL(form)
     }).catch((res)=> {
         console.log("Error login: "+res);
         ñ('#buttonSendLogin').hidden = false
@@ -84,13 +100,16 @@ window.TryRegister = (form)=>{
     ñ('#loadingMessage').hidden = false
     getUserData().then((res)=>{
         let exist = false
-        for (const u in res.val()) {
-            exist |= u===emailToId(form.elements.namedItem('Email').value)
-        }
+        let tentUserId = emailToId(form.elements.namedItem('Email').value);
+        for (const u in res.val()) 
+            if(u===tentUserId){
+                let emDB = res.child(`${tentUserId}/email`).val()
+                exist |= emDB !== form.elements.namedItem('Email').value
+            }
         if(exist)
-            alert("Este correo ya se encuentra registrado")
+            alert("Se ha presentado un error con este correo electrónico, prueba con un correo diferente o contacta con nosotros para solucionarlo.")
         else
-            Register(form)
+            Register(form,res,tentUserId)
         return false;
     }).catch((res)=> {
         console.log("Error register: "+res);
@@ -102,12 +121,3 @@ window.TryRegister = (form)=>{
     return false;
 }
 
-window.createDump = ()=>{
-    createDump();
-}
-
-
-// string that has to create hashcode
-let str = "asd"
-// console.log( b64EncodeUnicode(str).replace(/[0-9_=\/]+/g,'').toUpperCase().substring(0, 8).padStart(8, RandChar()));
-// console.log( Math.floor(10000000 + Math.random() * 90000000));

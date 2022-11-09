@@ -27,13 +27,13 @@ const getDB = function (){
     });
 };
 
-export function uploadImagesToUser(userId,files) {
+export function uploadImagesToUser(userId,files,reg) {
     return new Promise((resolve,reject)=>{
         let loaded = 0
         if(files.length == 0 )
             resolve("Sin imagenes a cargar!");
         Array.from(files).forEach((img,i) => {
-            imagesRef = sRef(storage, `${userId}/${i+1}-${img.name}`);
+            imagesRef = sRef(storage, `${userId}/Reg${reg}/${i+1}-${img.name}`);
             uploadBytes(imagesRef, img).then((snapshot) => {
                 loaded ++;
                 console.log('Uploaded a blob or file! -> '+i+" "+snapshot);
@@ -60,14 +60,15 @@ export function getUserData() {
 
 
 
-export function updateScore(userId, newScore) {
+export function updateScore(userId,reg, newScore, result) {
     return new Promise((resolve,reject)=>{
+        let res = result === 'W'? "WIN":"no";
         getDB().then((db)=>{
             const updates = {};
-            updates['/users/' + userId+'/score'] = newScore;
-            update(ref(db), updates).then(()=>{
-                resolve("Updated!! ")
-            });
+            updates['/users/' + userId+'/score-'+reg] = `${res}-${newScore}`;
+            updates['/users/' + userId+'/data-'+reg] = 'used-000000';
+            update(ref(db), updates).then(()=> resolve("Updated!! ") );
+
         }).catch((e)=> reject("error getDB: "+e))
     });
 }
@@ -81,43 +82,36 @@ export function DeleteUser(userId) {
 }
 
 
-export function createUserData(userId, name, country, email, company, position, amount, consent, files) {
+export function createUserData(userId, name, country, email, company, position, amount,  files,reg) {
     return new Promise((resolve,reject)=>{
         getDB().then((db)=>{
-            uploadImagesToUser(userId,files).then((msg)=>{
-                console.log(msg);
-                set(ref(db, 'users/' + userId), {
-                    username: name,
-                    country: country,
-                    email: email,
-                    company: company,
-                    position: position,
-                    amount: amount,
-                    score : 0,
-                    consent: consent
-                }).then((res)=> resolve("writted"));
+            uploadImagesToUser(userId,files,reg).then((msg)=>{
+                if (reg>1){
+                    const updates = {};
+                    updates['/users/' + userId+'/register'] = reg;
+                    updates['/users/' + userId+'/score-'+reg] = -1;
+                    updates['/users/' + userId+'/amount-'+reg] = amount;
+                    updates['/users/' + userId+'/data-'+reg] = `send-${Math.floor(10000000 + Math.random() * 90000000)}`;
+                    update(ref(db), updates).then(()=> resolve("Updated!! ") );
+                }else{
+                    let theData = {
+                        username: name,//Stable
+                        country: country,//Stable
+                        email: email,//Stable
+                        company: company,//Stable
+                        position: position,//Stable
+                        register: reg,
+                    }
+                    theData["score-"+reg] = -1;
+                    theData["amount-"+reg] = amount;
+                    theData["data-"+reg] = `send-${Math.floor(10000000 + Math.random() * 90000000)}`;
+    
+                    set(ref(db, 'users/' + userId), theData).then((res)=> resolve("writted"));
+                }
+
             }).catch((e)=> reject("error uploadFile: "+e));
         }).catch((e)=> reject("error getDB: "+e))
     });
 }
 
 
-export function createDump() {
-    return new Promise((resolve,reject)=>{
-        getDB().then((db)=>{
-            set(ref(db, 'users/' + "totoyykaren-at-gmail-com"), {
-                username: "Perencejo2",
-                country: "Argentina",
-                email: "ofmendez@gmail.com",
-                company: "company Z",
-                position: "Position",
-                amount: "Amount Z",
-                score : 100,
-                consent : true,
-                urlFile : "http://tyutyutyutyu"
-            }).then((res)=> resolve("writted"));
-        }).catch((e)=> reject("error getDB: "+e))
-    });
-}
-
-// export {createUserData }

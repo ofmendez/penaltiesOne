@@ -14,7 +14,7 @@
 
         <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="js/easeljs-NEXT.min.js"></script>
-	<script type="text/javascript" src="js/tweenjs.js"></script>
+	    <script type="text/javascript" src="js/tweenjs.js"></script>
         <script type="text/javascript" src="js/screenfull.js"></script>
         <script type="text/javascript" src="js/howler.min.js"></script>
         <script type="text/javascript" src="js/platform.js"></script>
@@ -66,8 +66,10 @@
                 let urlParams = new URLSearchParams(window.location.search);
                 let audiow = urlParams.get('win');
                 let reg = urlParams.get('reg');
+                let uId = urlParams.get('UID');
                 let country = urlParams.has('country')? urlParams.get('country'): "default";
-                let complement = `../?${TEXT_SHARE_SHARE3}=${urlParams.get('gc')}&reg=${reg}&d=`;
+                let complement1 = `../?${TEXT_SHARE_SHARE3}=${urlParams.get('gc')}&UID=${uId}&reg=${reg}&d=`;
+                let complement2 = `../?${TEXT_SHARE_SHARE4}=${urlParams.get('gc')}&UID=${uId}&reg=${reg}&d=`;
                 window.history.pushState({}, document.title, window.location.pathname);
 
                 var oMain = new CMain({
@@ -120,11 +122,10 @@
                 });
 
                 $(oMain).on("save_score", function (evt, activatedAudio, szMode) {
-                    complement = complement.concat(activatedAudio +"");
                     if(activatedAudio >= audiow)
-                        window.location = complement;
+                        window.location = complement1.concat(activatedAudio + "");
                     else
-                        window.location = "../?SigueIntentando";
+                        window.location = complement2.concat(activatedAudio + "");
                     if (getParamValue('ctl-arcade') === "true") {
                         parent.__ctlArcadeSaveScore({score: iScore, mode: szMode});
                     }

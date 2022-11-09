@@ -19,13 +19,13 @@
         <br>
         <form  onsubmit="return TryRegister(this)" action="#" id="Registro">
             <input type="text" id="NombreCompleto" name="NombreCompleto" placeholder="* Nombre Completo" required>
-            <select id="Pais" name="Pais">
+            <select required id="Pais" name="Pais">
                 <option disabled selected value>* País</option>
                 <option value="Argentina">Argentina</option>
                 <option value="Belice">Belice</option>
                 <option value="Bolivia">Bolivia</option>
                 <option value="Brasil">Brasil</option>
-                <option value="Chile ">Chile </option>
+                <option value="Chile">Chile </option>
                 <option value="Colombia">Colombia</option>
                 <option value="Ecuador">Ecuador</option>
                 <option value="ElSalvador">El Salvador</option>
@@ -52,7 +52,7 @@
             <input class="ElegirArchivos" type="file" id="ArchivosCarga" name="ArchivosCarga"
                 accept=".jpg, .jpeg, .png, .pdf, .doc, .docx" multiple>
             <div class="TerminosCondiciones">
-                <div class="AceptarTerminos"> <input id="checkbox" name="checkbox" type="checkbox" /></div>
+                <div class="AceptarTerminos"> <input  required onchange="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Para continuar debes aceptar los Términos y condiciones y la Política de privacidad de Vertiv.')" id="checkbox" name="checkbox" type="checkbox" /></div>
                 <div class="TextoTerminos"><label for="checkbox"> Doy mi consentimiento para recibir comunicaciones
                         promocionales de Vertiv. Entiendo que puedo optar por no recibir comunicaciones con Vertiv de
                         manera proactiva en cualquier momento. Al hacer clic en enviar acepta los <a
