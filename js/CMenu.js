@@ -21,7 +21,7 @@ function CMenu() {
         _pStartPosPlay = {x: CANVAS_WIDTH / 2 + 0, y: CANVAS_HEIGHT - 130};
         _oButPlay = new CGfxButton(_pStartPosPlay.x, _pStartPosPlay.y, oSprite);
         _oButPlay.addEventListener(ON_MOUSE_UP, this._onButPlayRelease, this);
-        _oButPlay.pulseAnimation();
+       
 
         s_iBestScore = getItem(LOCALSTORAGE_STRING[LOCAL_BEST_SCORE]);
         if (s_iBestScore === null) {
@@ -30,7 +30,7 @@ function CMenu() {
 	
         if (DISABLE_SOUND_MOBILE === false || s_bMobile === false) {
             var oSprite = s_oSpriteLibrary.getSprite('audio_icon');
-            _pStartPosAudio = {x: CANVAS_WIDTH - (oSprite.height / 2) - 10, y: (oSprite.height / 2) + 10};
+            _pStartPosAudio = {x: CANVAS_WIDTH - (oSprite.height / 2) - 10, y: (oSprite.height / 2) + 4};
             _oAudioToggle = new CToggle(_pStartPosAudio.x, _pStartPosAudio.y, oSprite, s_bAudioActive);
             _oAudioToggle.addEventListener(ON_MOUSE_UP, this._onAudioToggle, this);
         }
@@ -47,13 +47,13 @@ function CMenu() {
         
         
         var oSpriteInfo = s_oSpriteLibrary.getSprite("but_info");
-        _pStartPosInfo = {x: (oSpriteInfo.height / 2) + 10, y: (oSpriteInfo.height / 2) + 10};
+        _pStartPosInfo = {x: (oSpriteInfo.height / 2) - 64, y: (oSpriteInfo.height / 2) + 10};
         _oButInfo = new CGfxButton(_pStartPosInfo.x, _pStartPosInfo.y, oSpriteInfo, s_oStage);
         _oButInfo.addEventListener(ON_MOUSE_UP, this._onButInfoRelease, this);
         
         if (_fRequestFullScreen && screenfull.enabled){
             oSprite = s_oSpriteLibrary.getSprite('but_fullscreen');
-            _pStartPosFullscreen = {x:_pStartPosInfo.x + oSprite.width/2 + 10,y:oSprite.height/2 + 10};
+            _pStartPosFullscreen = {x:_pStartPosInfo.x + oSprite.width/2 + 10,y:oSprite.height/2 + 4};
 
             _oButFullscreen = new CToggle(_pStartPosFullscreen.x, _pStartPosFullscreen.y, oSprite, s_bFullscreen, s_oStage);
             _oButFullscreen.addEventListener(ON_MOUSE_UP, this._onFullscreenRelease, this);

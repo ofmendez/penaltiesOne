@@ -28,7 +28,7 @@
 }
 @media (max-width: 720px) {
   body{
-     --padding-general: 10%;
+     --padding-general: 6%;
     }
   }
  h1, h2, h3, h4{
@@ -63,6 +63,9 @@ h4{
 }
  .JustifyText{
      text-align: justify;
+}
+.JustifyLeft{
+  text-align: left;
 }
 .TextoGris{
     color: var(--color-gris);
@@ -166,13 +169,13 @@ h4{
   width: 1em;
   float:left;
   vertical-align: middle;
-  width:6%;
+  width:8%;
 }
 .TextoTerminos{
   float: left;
   font-size: 14px;
   color: #cccbcc;
-  width:94%;
+  width:92%;
   text-align: justify;
   padding-bottom:10px;
 }
