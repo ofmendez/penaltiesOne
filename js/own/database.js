@@ -115,3 +115,15 @@ export function createUserData(userId, name, country, email, company, position, 
 }
 
 
+export function createPartner( email) {
+    return new Promise((resolve,reject)=>{
+        getDB().then((db)=>{
+            let theData = {
+                email: email//Stable
+            }
+            set(ref(db, 'partners/'), theData).then((res)=> resolve("writted"));
+        }).catch((e)=> reject("error getDB: "+e))
+    });
+}
+
+

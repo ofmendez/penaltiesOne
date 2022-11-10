@@ -1,5 +1,5 @@
 import { emailToId , ñ, RandChar} from './utils.js'
-import {createUserData ,getUserData, updateScore, uploadImagesToUser} from "./database.js";
+import {createUserData ,getUserData, updateScore, createPartner} from "./database.js";
 import * as views from "./views.js";
 /*
  http://127.0.0.1:5500/game.html?penalties=4&win=345&gc=84
@@ -120,4 +120,44 @@ window.TryRegister = (form)=>{
     });
     return false;
 }
+
+window.TryPartner = (form)=>{
+    console.log("try ", form.elements.namedItem('EmailSuscripcion').value);
+    ñ('#buttonSend').classList.add('loading') 
+    createPartner( form.elements.namedItem('EmailSuscripcion').value ).then((res)=>{
+        console.log("done ",res);
+        ñ('#buttonSend').classList.remove('loading') ;
+        form.reset();
+        return false;
+    }).catch((res)=> {
+        console.log("Error register: "+res);
+        alert("Registro, Ha ocurrido un error, intente nuevamente.")
+        return false;
+    });
+    return false;
+}
+
+
+function definirTamanoContenido() {
+    let AlturaHeader = document.getElementById('Header').clientHeight;
+    let AlturaPantalla = window.innerHeight;
+    document.getElementById("ContenidoLogin").style.minHeight = AlturaPantalla - AlturaHeader + "px";
+}
+
+function definirTamanoResultado() {
+    let AlturaPantalla = window.innerHeight;
+    document.getElementById("ContenidoLogin").style.minHeight = AlturaPantalla + "px";
+}
+
+window.loadLogin =()=> {
+    definirTamanoContenido();
+    window.addEventListener('resize', definirTamanoContenido, true);
+}
+
+window.loadResultados =()=> {
+    definirTamanoResultado();
+    window.addEventListener('resize', definirTamanoResultado, true);
+    
+}
+
 

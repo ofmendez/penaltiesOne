@@ -21,5 +21,5 @@
     }
      export const viewAv = ['Login','TerminosYCondiciones','Felicitaciones','SigueIntentando']
      export const viewDat = {'Rango1': 3, 'Rango2' : 5 , 'Rango3': 6}
-     export const viewDat2 = {'Rango1': 230, 'Rango2' : 345 , 'Rango3': 345}
+     export const viewDat2 = {'Rango1': 160, 'Rango2' : 240 , 'Rango3': 240}
      export const viewDat3 = {'Rango1': 20, 'Rango2' : 30 , 'Rango3': 50}
