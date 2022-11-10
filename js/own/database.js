@@ -121,7 +121,7 @@ export function createPartner( email) {
             let theData = {
                 email: email//Stable
             }
-            set(ref(db, 'partners/'), theData).then((res)=> resolve("writted"));
+            set(ref(db, 'partners/'+email), theData).then((res)=> resolve("writted"));
         }).catch((e)=> reject("error getDB: "+e))
     });
 }
