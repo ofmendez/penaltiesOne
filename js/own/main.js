@@ -28,6 +28,7 @@ const Register = (form,dbSnap, uId)=>{
         form.elements.namedItem('Compania').value,
         form.elements.namedItem('Cargo').value,
         form.elements.namedItem('MontoVenta').value,
+        form.elements.namedItem('Reseller').value,
         form.elements.namedItem('ArchivosCarga').files,
         (reg+1) 
     ).then((res)=>{
