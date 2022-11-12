@@ -8,19 +8,19 @@
     <div class="BannerRight">
         <img class="EscudoJuego " src="Images/LogoEquipoElite.svg" />
         <br>
-        <h1>HAZ PARTE <span class="TextoGris">DE NUESTRO</span> EQUIPO <span class="TextoNaranja">ÉLITE</span></h1>
+        <h1>SÉ PARTE <span class="TextoGris">DE NUESTRO</span> EQUIPO <span class="TextoNaranja">ÉLITE</span></h1>
     </div>
 </div>
 <div class="Content ContentMaxWidth">
     <div class="LeftContent">
-        <h2>REGÍSTRATE AHORA</h2>
+        <h2>REGÍSTRATE AHORA REGISTRAR AGORA</h2>
         <div class="FooterGradient">
         </div>
         <br>
         <form  onsubmit="return TryRegister(this)" action="#" id="Registro">
-            <input type="text" id="NombreCompleto" name="NombreCompleto" placeholder="* Nombre Completo" required>
+            <input type="text" id="NombreCompleto" name="NombreCompleto" placeholder="* Nombre Completo / Nome Completo" required>
             <select required id="Pais" name="Pais">
-                <option disabled selected value>* País</option>
+                <option disabled selected value>* País / País</option>
                 <option value="Argentina">Argentina</option>
                 <option value="Belice">Belice</option>
                 <option value="Bolivia">Bolivia</option>
@@ -40,20 +40,23 @@
                 <option value="Uruguay">Uruguay</option>
                 <option value="Venezuela">Venezuela</option>
             </select>
-            <input type="email" id="Email" name="Email" placeholder="* E-mail Corporativo" required>
+            <input type="email" id="Email" name="Email" placeholder="* E-mail Corporativo / E-mail Corporativo" required>
             <input type="text" id="Compania" name="Compania" placeholder="* Compañia" required>
-            <input type="text" id="Cargo" name="Cargo" placeholder="* Cargo" required>
+            <input type="text" id="Cargo" name="Cargo" placeholder="* Cargo / Posição" required>
             <select required id="MontoVenta" name="MontoVenta">
-                <option disabled selected value>* Monto de Venta</option>
+                <option disabled selected value>* Monto de Venta / Valor de Venda</option>
                 <option value="Rango1">De $500 a $1,000 dólares.</option>
                 <option value="Rango2">De $1,000 a $1,500 dólares.</option>
                 <option value="Rango3">Más de $1,500 dólares.</option>
             </select>
-            <input type="text" id="Reseller" name="Reseller" placeholder="* Reseller o Cliente Final" required>
+            <input type="text" id="Reseller" name="Reseller" placeholder="* Reseller o Cliente Final / Revendedor ou Cliente Final" required>
 
-            <p>A continuación carga un archivo de máximo 20mb que certifique el monto de tu venta en formato pdf, jpg o png.</p>
+            <p>Carga o Sube tu Factura / Carregue sua Fatura</p>
             <input required class="ElegirArchivos" type="file" id="ArchivosCarga" name="ArchivosCarga"
                 accept=".jpg, .jpeg, .png, .pdf, .doc, .docx" multiple>
+                <p>Carga un archivo de máximo 20mb que certifique el monto de tu venta en formato pdf, jpg o png. / 
+                    Faça o upload de um arquivo de no máximo 20mb que ateste o valor da sua venda em formato pdf, jpg ou png.</p>
+                    <br>
             <div class="TerminosCondiciones">
                 <div class="AceptarTerminos"> <input  required onchange="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Para continuar debes aceptar los Términos y condiciones y la Política de privacidad de Vertiv.')" id="checkbox" name="checkbox" type="checkbox" /></div>
                 <div class="TextoTerminos"><label for="checkbox"> Doy mi consentimiento para recibir comunicaciones
@@ -61,21 +64,24 @@
                         manera proactiva en cualquier momento. Al hacer clic en enviar acepta los <a
                             target="_blank" class="LinkTerminos" href="?TerminosYCondiciones">Términos y condiciones y la Política de
                             privacidad de
-                            Vertiv</a>.</label></div>
+                            Vertiv</a>. / 
+                            Autorizo ​​receber comunicações promocionais da Vertiv. Entendo que posso optar proativamente por não receber comunicações da Vertiv a qualquer momento. Ao clicar em enviar você aceita os <a
+                                target="_blank" class="LinkTerminos" href="?TerminosYCondiciones">Termos e Condições e Política de Privacidade da Vertiv</a>.</label></div>
             </div>
-            <button id="buttonSend" type="submit" class="OrangeButton" form="Registro" value="Submit">ENVIAR</button>
-            <button hidden disabled class="OrangeButton loading"  id="loadingMessage">CARGANDO</button>
+            <button id="buttonSend" type="submit" class="OrangeButton" form="Registro" value="Submit">ENVIAR / MANDAR</button>
+            <button hidden disabled class="OrangeButton loading"  id="loadingMessage">CARGANDO / COBRANDO</button>
             <div class="ErrorForm" style="display:none;">Por favor completa correctamente el formulario y vuelve a
-                intentarlo.</div>
+                intentarlo. / 
+                Por favor, preencha o formulário corretamente e tente novamente.</div>
             <div hidden class="OkForm" id="okForm">Gracias por registrarte, pronto recibirás en el Correo Electrónico
-                que inscribiste la información necesaria para participar.</div>
+                que inscribiste la información necesaria para participar. / Obrigado por se cadastrar, em breve você receberá no e-mail que cadastrou as informações necessárias para participar.</div>
         </form>
     </div>
 
     <!-- ////////////////  SEGUNDA COLUMNA  //////////////////////// -->
 
     <div class="RightContent">
-        <h3>¿ESTÁS LISTO? PREPARATE PARA ANOTAR.</h3>
+        <h3>¿ESTÁS LISTO? VE A JUGAR / ESTÁS PRONTO? VAI BRINCAR</h3>
         <br>
         <p class="JustifyText">Participa con Vertiv y gana increíbles premios. Sí realizas una venta superior a USD
             $500, inscrÍbete y recibirás a vuelta de correo tus datos de acceso para participar en nuestro gran reto. No
@@ -84,13 +90,13 @@
         <p>¿Ya te registraste? Haz clic a continuación para jugar.</p>
         <a href="?Login" >
             <button class="OrangeButton">  
-                IR A JUGAR
+                IR A JUGAR / TOQUE
             </button>
         </a>
         <br><br>
         <p>Consulta los Términos y Condiciones de la Experiencia.</p>
         <a href="?TerminosYCondiciones" target="_blank">
-            <button class="OrangeButton">TÉRMINOS Y CONDICIONES</button>
+            <button class="OrangeButton">TÉRMINOS Y CONDICIONES / TERMOS E CONDIÇÕES</button>
         </a>
         <br><br>
         <img src="Images/JugadorInscripcion.png">
@@ -100,16 +106,14 @@
     <div class="FooterNaranja">
         <div class="FooterNaranjaContent">
             <p style="color: var(--color-naranja);">-</p>
-            <h4>¡CONVIÉRTETE EN UN PARTNER DE VERTIV!</h4>
+            <h4>¡EN SOLO 5 MIN CONVIÉRTETE EN UN PARTNER DE VERTIV!</h4>
             <br>
             <p>Si aún no formas parte de nuestro programa para socios, te invitamos a registrarte y gozar de todos los
                 beneficios y herramientas para ayudarte a hacer crecer tu negocio.</p>
             <br>
-            <form onsubmit="return TryPartner(this)" action="#" id="Suscripcion">
-                <input class="InputSuscripcion" type="email" id="EmailSuscripcion" name="EmailSuscripcion" placeholder="* E-mail"
-                    required>
-                <button id="buttonSend" type="submit" class="SubmitSuscripcion" form="Suscripcion" value="Submit">ENVIAR</button>
-            </form>
+            <a href="https://partners.vertiv.com/LatinAmericanSpanish/vertiv_terms.aspx" target="_blank">
+                <button class="BlackButton">REGISTRATE AQUÍ / ASSINE AQUI</button>
+            </a>
             <p style="color: var(--color-naranja);">-</p>
         </div>
     </div>

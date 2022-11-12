@@ -89,6 +89,23 @@ h4{
      cursor: pointer;
      font-family: Calibre-Semibold;
 }
+
+.BlackButton{
+  background-color: var(--color-negro);
+  border: none;
+  color: var(--color-blanco);
+  padding: 15px 32px 9px;
+  width:100%;
+  max-width: 500px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: Calibre-Semibold;
+}
+
  img{
      width:100%;
 }
