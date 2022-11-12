@@ -8,19 +8,24 @@
                <img class="EscudoLogin"src="../Images/LogoEquipoElite.svg" />
             </div>
             <div class="ContenidoFranja">
-               <h3> ¿ESTÁS LISTO?<br>
-                  <span class="TextoGris">PREPARATE</span> PARA<br>
-                  <span class="TextoNaranja">ANOTAR.</span>
-               </h3>
+               <h4> ¿ESTÁS LISTO?<br>
+                  <span class="TextoGris">PREPARATE</span> PARA <span class="TextoNaranja">ANOTAR.</span>
+               </h4>
+               <h4> ESTÁS PRONTO?<br>
+                  <span class="TextoGris">PREPARE-SE</span> PARA <span class="TextoNaranja">MARCAR.</span>
+               </h4>
             </div>
             <div class="ContenidoFranja FormaLogin">
                <form onsubmit="return TryLogin(this)"   id="Registro">
-                  <input type="text" id="Usuario" name="Usuario" placeholder="Nombre de Usuario" required>
-                  <input type="password" id="Contrasena" name="Contrasena" placeholder="Contraseña" required>
+                  <input type="text" id="Usuario" name="Usuario" placeholder="Nombre de Usuario / Nome de Usuário" required>
+                  <input type="password" id="Contrasena" name="Contrasena" placeholder="Contraseña / Senha" required>
                   <p>¿No tienes una cuenta? <a class="LinkTerminos" href="">Regístrate aquí</a></p>
-                  <button id="buttonSendLogin" type="submit" class="OrangeButton" form="Registro" value="Submit">INGRESAR</button>
-                  <button hidden disabed id="loadingMessageLogin"  class="OrangeButton loading" >INGRESANDO</button>
-                  <div class="CredencialesErradas" id="errorLogin" hidden>Las credenciales que ingresaste no son correctas, por favor revísalas y vuelve a intentarlo.</div>
+                  <p>Você não tem uma conta? <a class="LinkTerminos" href="">Assine aqui</a></p>
+                  <button id="buttonSendLogin" type="submit" class="OrangeButton" form="Registro" value="Submit">INGRESAR / 
+                     ENTRAR</button>
+                  <button hidden disabed id="loadingMessageLogin"  class="OrangeButton loading" >INGRESANDO / 
+                     ENTRAR</button>
+                  <div class="CredencialesErradas" id="errorLogin" hidden>Las credenciales que ingresaste no son correctas, por favor revísalas y vuelve a intentarlo. / As credenciais inseridas não estão corretas, verifique-as e tente novamente.</div>
                </form>
                <br>
                <br>
