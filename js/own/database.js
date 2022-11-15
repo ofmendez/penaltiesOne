@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js'
-import { getDatabase, set, ref, onValue, child, push, update, remove } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-database.js'
+import { getDatabase, set, ref, onValue, child, push, update, remove,serverTimestamp  } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-database.js'
 import { getStorage, uploadBytes, ref as sRef } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-storage.js'
 import {loadCredentials} from './files.js'
 
@@ -39,7 +39,10 @@ export function uploadImagesToUser(userId,files,reg) {
                 console.log('Uploaded a blob or file! -> '+i+" "+snapshot);
                 if(loaded==files.length)
                     resolve("Cargadas Las Imagenes");
-            }).catch((e) => reject("Una de las imagenes no fue posible cargarla: "+e));
+            }).catch((e) => {
+                alert("Alguna o todas las imágenes superan el tamaño o no cumplen el formato solicitado. \n Por favor imágenes en jpg, png o pdf menores a 20MB")
+                reject("Una de las imagenes no fue posible cargarla: "+e)
+            });
         });
     });
 }
@@ -89,6 +92,7 @@ export function createUserData(userId, name, country, email, company, position, 
                 if (reg>1){
                     const updates = {};
                     updates['/users/' + userId+'/register'] = reg;
+                    updates['/users/' + userId+'/timestamp-'+reg] = serverTimestamp();
                     updates['/users/' + userId+'/score-'+reg] = -1;
                     updates['/users/' + userId+'/amount-'+reg] = amount;
                     updates['/users/' + userId+'/data-'+reg] = `send-${Math.floor(10000000 + Math.random() * 90000000)}`;
@@ -102,6 +106,7 @@ export function createUserData(userId, name, country, email, company, position, 
                         position: position,//Stable
                         register: reg,
                     }
+                    theData["timestamp-"+reg] = serverTimestamp();
                     theData["score-"+reg] = -1;
                     theData["amount-"+reg] = amount;
                     theData["reseller-"+reg] = reseller;

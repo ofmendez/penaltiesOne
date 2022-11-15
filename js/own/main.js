@@ -38,8 +38,10 @@ const Register = (form,dbSnap, uId)=>{
         ñ('#loadingMessage').hidden = true
         ñ('#okForm').hidden = false
     }).catch((e)=> {
-        alert("Ha ocurrido un error, intente nuevamente."+e)
-    })
+        ñ('#buttonSend').hidden = false
+        ñ('#loadingMessage').hidden = true
+        console.log("Ha ocurrido un error en Register: "+e)
+    });
 }
 
 function Loaded(v) {
