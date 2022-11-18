@@ -32,7 +32,7 @@ function CScoreBoard(oParentContainer) {
 
         _oPointText = new createjs.Text(999999, "50px " + FONT_GAME, TEXT_COLOR);
         _oPointText.textAlign = "left";
-        _oPointText.x = 200;
+        _oPointText.x = 350;
         _oContainer.addChild(_oPointText);
 
         _oPointTextStroke = new createjs.Text(999999, "50px " + FONT_GAME, TEXT_COLOR_STROKE);

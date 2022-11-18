@@ -41,7 +41,7 @@ export function uploadImagesToUser(userId,files,reg) {
                     resolve("Cargadas Las Imagenes");
             }).catch((e) => {
                 alert("Alguna o todas las imágenes superan el tamaño o no cumplen el formato solicitado. \n Por favor imágenes en jpg, png o pdf menores a 20MB")
-                reject("Una de las imagenes no fue posible cargarla: "+e)
+                reject("Una de las imágenes no fue posible cargarla: "+e)
             });
         });
     });

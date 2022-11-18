@@ -35,7 +35,7 @@
      font-family: Calibre-Semibold;
 }
 h1{
-    font-size: clamp(20px, 7.5vw, 300px);
+    font-size: clamp(20px, 7.5vw, 120px);
     text-align:right;
      font-family: Calibre-Semibold;
      line-height: 0.85em;
@@ -72,6 +72,11 @@ h5{
 .JustifyLeft{
   text-align: left;
 }
+
+.JustifyRight{
+  text-align: right;
+}
+
 .TextoGris{
     color: var(--color-gris);
     font-family: Calibre-Semibold;
@@ -132,6 +137,8 @@ h5{
   }
   .Banner{
         padding:var(--padding-general);
+        max-width: 2200px;
+        margin: 0 auto;
   }
   .BannerLeft{
     width: 50%;
