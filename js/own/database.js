@@ -85,7 +85,7 @@ export function DeleteUser(userId) {
 }
 
 
-export function createUserData(userId, name, country, email, company, position, amount, reseller,  files,reg) {
+export function createUserData(userId, name, country, email, company, position, amount, reseller, invoice,  files,reg) {
     return new Promise((resolve,reject)=>{
         getDB().then((db)=>{
             uploadImagesToUser(userId,files,reg).then((msg)=>{
@@ -110,6 +110,7 @@ export function createUserData(userId, name, country, email, company, position, 
                     theData["score-"+reg] = -1;
                     theData["amount-"+reg] = amount;
                     theData["reseller-"+reg] = reseller;
+                    theData["invoice-"+reg] = invoice;
                     theData["data-"+reg] = `send-${Math.floor(10000000 + Math.random() * 90000000)}`;
     
                     set(ref(db, 'users/' + userId), theData).then((res)=> resolve("writted"));
